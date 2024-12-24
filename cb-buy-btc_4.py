@@ -1,5 +1,5 @@
-### This script uses the Coinbase API to check Bitcoin price each hour. If the price has droped by 4% in the last 24 hours, a market buy is triggered ###
-### The idea behind the script is that there is a continuous buy order when the bitcoin price is dropping helping to "stack"                          ###
+### This script uses the coinbase api to check bitcoins price each hour. If the price has droped by 4% in the last 24 hours, a market buy is triggered ###
+### The idea behind the script is that there is a continuous buy order when the bitcoin price is dropping helping to "stack" only on price corrections ###
 
 from coinbase_advanced_trader.enhanced_rest_client import EnhancedRESTClient
 import time
