@@ -1,11 +1,25 @@
-### This script uses the coinbase api to check bitcoins price each hour. If the price has droped by 4% in the last 24 hours, a market buy is triggered ###
-### The idea behind the script is that there is a continuous buy order when the bitcoin price is dropping helping to "stack" only on price corrections ###
+### This script uses the Coinbase API to check Bitcoin price each hour. If the price has droped by 4% in the last 24 hours, a market buy is triggered ###
+### The idea behind the script is that there is a continuous buy order when the bitcoin price is dropping helping to "stack"                          ###
 
 from coinbase_advanced_trader.enhanced_rest_client import EnhancedRESTClient
 import time
+import json
+import os
 
-api_key = "add your api_key"
-api_secret = "add your api_secret"
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Construct the path to the JSON file
+json_path = os.path.join(script_dir, 'cb-api.json')
+
+# Load API credentials from JSON file
+try:
+    with open(json_path, 'r') as f:
+        credentials = json.load(f)
+        api_key = credentials['api_key']
+        api_secret = credentials['api_secret']
+except Exception as e:
+    print(f"Error loading API credentials: {e}")
+    exit(1)
 
 client = EnhancedRESTClient(api_key=api_key, api_secret=api_secret)
 
@@ -32,7 +46,7 @@ def check_price_drop(product_info, threshold=4):
         print(f"Error checking price drop: {e}")
         return False, None
 
-def place_buy_order(product_id="BTC-USDC", amount_in_usdc="10"):
+def place_buy_order(product_id="BTC-USDC", amount_in_usdc="25"):
     """Place a market buy order."""
     try:
         order = client.place_order(
@@ -62,7 +76,7 @@ try:
 
         if has_dropped:
             print("Price has dropped by 4%! Placing a buy order...")
-            order_response = place_buy_order(amount_in_usdc="10")
+            order_response = place_buy_order(amount_in_usdc="25")
             if order_response:
                 print("Buy order response:", order_response)
                 break  # Exit after successful purchase
