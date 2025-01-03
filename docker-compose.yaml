@@ -1,10 +1,16 @@
 services:
-  coinbase_buy_bot:
-    image: coinbase_buy_bot:0.1
+  cb-stacked-bot:
+    image: crypto-stacked-bot:0.6
+    volumes:
+      - ./config:/config
     secrets:
-      - cb-api.json
+      - cdp_api_key.json
+      - webhooks.toml
 
       
 secrets:
-  my_secret:
-    file: /opt/docker/coinbase-stack-bot/cb-api.json
+  cdp_api_key.json:
+    file: ./config/cdp_api_key.json
+  webhooks.toml:
+    file: ./config/webhooks.toml
+    

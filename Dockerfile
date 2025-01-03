@@ -1,13 +1,9 @@
-FROM python:3.12.8
+FROM python:3.10.12-slim
 
+COPY ./src /app
 
 WORKDIR /app
 
+RUN pip install --no-cache-dir -r /app/requirements.txt && rm /app/requirements.txt
 
-COPY ./requirements /app
-
-
-RUN pip install --no-cache-dir -r /app/requirements.txt 
-
-
-CMD ["/bin/sh"]
+CMD python3 /app/main.py
