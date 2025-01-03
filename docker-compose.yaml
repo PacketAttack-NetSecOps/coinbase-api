@@ -1,0 +1,10 @@
+services:
+  coinbase_buy_bot:
+    image: coinbase_buy_bot:0.1
+    secrets:
+      - cb-api.json
+
+      
+secrets:
+  my_secret:
+    file: /opt/docker/coinbase-stack-bot/cb-api.json

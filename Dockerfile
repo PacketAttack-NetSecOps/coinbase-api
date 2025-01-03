@@ -1,13 +1,13 @@
 FROM python:3.12.8
 
 
-COPY /opt/docker/secrets/cb-api.json ./
+WORKDIR /app
 
 
-RUN git clone https://github.com/PacketAttack-NetSecOps/coinbase-api.git && \
-    git checkout dockerization && \
-    pip install --no-cache-dir -r /coinbase-api/requirements.txt && \
-    python3 /coinbase-api/cb-buy-btc_4-percent_drop_D.py
+COPY ./requirements /app
+
+
+RUN pip install --no-cache-dir -r /app/requirements.txt 
 
 
 CMD ["/bin/sh"]
