@@ -6,13 +6,12 @@
 
 #### You can either transfer the file to the host machine and replace the example file in /config, or you can copy and paste your name and privateKey values into the example file if that's easier.
 
-* Once logged into your coinbase account on a desktop browser, click the "more" menu in the bottom left and then "advanced api".
-* Proceed with generating your API key and ensure the cdp_api_key.json file appears in your downloads.
-
+[Coinbase Advanced Trade API key creation](https://help.coinbase.com/en/exchange/managing-my-account/how-to-create-an-api-key)
 
 ## webhooks.toml
 
 #### Create your three channels in discord and provide the full urls in the /config/webhooks.toml.
+[Discord Webhooks](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 
 * Contains three seperate, private webhook URLs:
 * price-bot: posts hourly updates on the trading pairs you specifiy in /settings/bot-settings.toml

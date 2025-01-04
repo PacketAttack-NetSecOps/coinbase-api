@@ -1,6 +1,6 @@
 services:
   cb-stacked-bot:
-    image: crypto-stacked-bot:0.6
+    image: crypto-stacked-bot:1.0
     volumes:
       - ./settings:/app/settings
     secrets:
