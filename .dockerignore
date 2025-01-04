@@ -1,2 +1,7 @@
-cb-api.json
+.venv
+config
+settings
+src/__pycache__
+.gitignore
+docker-composer.yaml
 README.md

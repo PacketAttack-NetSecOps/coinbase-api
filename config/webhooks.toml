@@ -1,0 +1,4 @@
+[webhook_urls]
+price-bot_url = "https://discord.com/api/webhooks/***"
+buy-bot_url = "https://discord.com/api/webhooks/***"
+bot-errors_url = "https://discord.com/api/webhooks/***"

@@ -1,0 +1,4 @@
+{
+   "name": "organizations/***",
+   "privateKey": "-----BEGIN EC PRIVATE KEY-----\n***\n-----END EC PRIVATE KEY-----\n"
+} 
