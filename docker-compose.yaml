@@ -2,7 +2,7 @@ services:
   cb-stacked-bot:
     image: crypto-stacked-bot:0.6
     volumes:
-      - ./config:/config
+      - ./settings:/settings
     secrets:
       - cdp_api_key.json
       - webhooks.toml

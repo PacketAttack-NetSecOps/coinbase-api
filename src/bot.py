@@ -8,7 +8,7 @@ def bot_config_retrieval():
     """retreives currency and parameters from bot.toml."""
     try:
         src_path = os.path.dirname(__file__)[:-3]
-        with open(src_path + "config/bot_settings.toml", "r", encoding = "UTF-8") as handle:
+        with open(src_path + "settings/bot_settings.toml", "r", encoding = "UTF-8") as handle:
         #secrets_path = os.path.abspath(os.sep) + "run/secrets/"
         #with open(secrets_path + "bot_settings.toml", "r", encoding = "UTF-8") as handle:
             bot_config = toml.load(handle)
