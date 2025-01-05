@@ -27,7 +27,7 @@ Buy Bitcoin equal to 25 USDC.
 <YES> 
 Buy Bitcoin equal to 25 USDC.
 
-9:00 AM: has the USDC value Bitcoin dropped by 4% or more over the last 24 hrs?
+10:00 AM: has the USDC value Bitcoin dropped by 4% or more over the last 24 hrs?
 <NO>
 Do nothing.
 ```
@@ -46,16 +46,18 @@ Do nothing.
 
 ## Getting_Started
 
-### Pull down the files and build your docker image:
+1. Pull down the files and build your docker image:
 
 ```                                                             
 git clone https://github.com/PacketAttack-NetSecOps/coinbase-api
 cd coinbase-api
 git checkout dockerization                                      
-docker build -t crypto-stacked-bot:1.0                          
+docker build -t crypto-stacked-bot:1.0 .                          
 ```                                                             
 
-### Ensure the image tag in docker-compose.yaml matches the tag you chose when building the image.
+▲
+2. Ensure the image tag in docker-compose.yaml matches the tag you chose when building the image.
+▼ 
 
 ```                                                             
 services:                                                       
@@ -63,7 +65,8 @@ services:
     image: crypto-stacked-bot:1.0                               
 ```                                                             
 
-### Set up your /config and /settings directories using README.md in each directory.
+3. Set up your /config and /settings directories using README.md in each directory.
+4. Run docker-compose
 
 ```
 docker-compose up -d
