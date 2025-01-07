@@ -1,5 +1,7 @@
+import json
 import os
 import toml
+import uuid
 import client
 import webhook
 
@@ -41,7 +43,7 @@ def check_price_drop(product_info, threshold):
         return False, None
 
 
-def place_buy_order(product_id, amount_in_usdc):
+#def place_buy_order(product_id, amount_in_usdc):
     """Place a market buy order."""
     try:
         cdb_client = client.initialize_client()
@@ -52,6 +54,30 @@ def place_buy_order(product_id, amount_in_usdc):
             funds=amount_in_usdc  # Amount to spend in USDC
         )
         return order
+    except Exception as e:
+        webhook.error_webhook(f"Error placing buy order: {e}")
+        return None
+
+
+def place_buy_order(product_id, amount_in_usdc):
+    """Place a market buy order."""
+    try:
+        cdb_client = client.initialize_client()   
+        order = cdb_client.market_order_buy(
+            uuid = uuid.uuid4(),
+            client_order_id=str(uuid),
+            product_id=product_id,
+            quote_size=amount_in_usdc
+        )
+
+        if order['success']:
+            order_id = order['success_response']['order_id']
+            fills = client.get_fills(order_id=order_id)
+            return(json.dumps(fills.to_dict(), indent=2))
+            
+        else:
+            error_response = order['error_response']
+            return(error_response)
     except Exception as e:
         webhook.error_webhook(f"Error placing buy order: {e}")
         return None
