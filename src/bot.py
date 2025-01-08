@@ -69,15 +69,7 @@ def place_buy_order(product_id, amount_in_usdc):
             product_id=product_id,
             quote_size=amount_in_usdc
         )
-
-        if order['success']:
-            order_id = order['success_response']['order_id']
-            fills = cdb_client.get_fills(order_id=order_id)
-            return(json.dumps(fills.to_dict(), indent=2))
-            
-        else:
-            error_response = order['error_response']
-            return(error_response)
+        return(json.dumps(order, indent=2))
     except Exception as e:
         webhook.error_webhook(f"Error placing buy order: {e}")
         return None
