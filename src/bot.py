@@ -72,7 +72,7 @@ def place_buy_order(product_id, amount_in_usdc):
 
         if order['success']:
             order_id = order['success_response']['order_id']
-            fills = client.get_fills(order_id=order_id)
+            fills = cdb_client.get_fills(order_id=order_id)
             return(json.dumps(fills.to_dict(), indent=2))
             
         else:
