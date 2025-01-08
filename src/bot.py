@@ -62,10 +62,10 @@ def check_price_drop(product_info, threshold):
 def place_buy_order(product_id, amount_in_usdc):
     """Place a market buy order."""
     try:
-        cdb_client = client.initialize_client()   
+        cdb_client = client.initialize_client()
+        order_id = uuid.uuid4()
         order = cdb_client.market_order_buy(
-            uuid = uuid.uuid4(),
-            client_order_id=str(uuid),
+            client_order_id=str(order_id),
             product_id=product_id,
             quote_size=amount_in_usdc
         )
