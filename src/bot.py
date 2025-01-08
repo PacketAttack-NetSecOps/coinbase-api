@@ -75,8 +75,8 @@ def place_buy_order(product_id, amount_in_usdc):
             time.sleep(10)
             order_id = order['success_response']['order_id']
             fills = cdb_client.get_fills(order_id=order_id)
-            order_details = (json.dumps(fills.to_dict(), indent=2))
-            return order_details["fills"]
+            return (json.dumps(fills.to_dict(), indent=2))
+            
             
         else:
             error_response = order['error_response']
