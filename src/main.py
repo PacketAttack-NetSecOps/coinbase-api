@@ -29,7 +29,6 @@ try:
                 if order_response:
                     order_report = (f"{product_info.product_id} | Buy order response:, {order_response}")
                     webhook.buy_webhook(order_report)
-                    break
         time.sleep(3600)
 
 
