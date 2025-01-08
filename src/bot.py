@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import toml
 import uuid
 import client
@@ -69,7 +70,17 @@ def place_buy_order(product_id, amount_in_usdc):
             product_id=product_id,
             quote_size=amount_in_usdc
         )
-        return(json.dumps(order, indent=2))
+
+        if order['success']:
+            time.sleep(10)
+            order_id = order['success_response']['order_id']
+            fills = cdb_client.get_fills(order_id=order_id)
+            order_details = (json.dumps(fills.to_dict(), indent=2))
+            return order_details["fills"]
+            
+        else:
+            error_response = order['error_response']
+            return(error_response)
     except Exception as e:
         webhook.error_webhook(f"Error placing buy order: {e}")
         return None

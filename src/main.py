@@ -27,7 +27,7 @@ try:
                 webhook.buy_webhook(DROP_REPORT)
                 order_response = bot.place_buy_order(product_id=parameter["GLOBAL_PRODUCT_ID"], amount_in_usdc=parameter["GLOBAL_BUY_INCREMENT"])
                 if order_response:
-                    order_report = (f"{product_info.product_id} | Buy order response:, {order_response}")
+                    order_report = (f"{product_info.product_id} | Buy order response:\n {order_response}")
                     webhook.buy_webhook(order_report)
         time.sleep(3600)
 
