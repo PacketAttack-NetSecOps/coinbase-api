@@ -15,7 +15,6 @@ def cdp_api_key_retrieval():
             return key_file
     except Exception as e:
         webhook.error_webhook(f"Error retrieving secrets: {e}")
-        return None
 
 
 def initialize_client():
@@ -27,4 +26,3 @@ def initialize_client():
         return client
     except Exception as e:
         webhook.error_webhook(f"Error initializing advanced trader client: {e}")
-        return None

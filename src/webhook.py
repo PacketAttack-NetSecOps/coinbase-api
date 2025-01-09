@@ -4,8 +4,6 @@ import requests
 
 
 def webhook_url_retrieval():
-    #src_path = os.path.dirname(__file__)[:-3]
-    #with open(src_path + "config/webhooks.toml", "r", encoding = "UTF-8") as handle:
     try:
         secrets_path = os.path.abspath(os.sep) + "run/secrets/"
         with open(secrets_path + "webhooks.toml", "r", encoding = "UTF-8") as handle:
@@ -13,7 +11,6 @@ def webhook_url_retrieval():
             return webhooks
     except Exception as e:
         print(f"Error fetching product info: {e}")
-        return None
 
 
 def price_webhook(report):
@@ -27,7 +24,7 @@ def price_webhook(report):
         requests.post(url, json=content, timeout=10)
     except Exception as e:
         print(f"Error POSTing price report: {e}")
-        return None
+
 
 def buy_webhook(report):
     """Retrieves webhook url from webhooks file and sends report."""
@@ -39,7 +36,6 @@ def buy_webhook(report):
         requests.post(url, json=content, timeout=10)
     except Exception as e:
         print(f"Error POSTing buy report: {e}")
-        return None
 
 
 def error_webhook(report):
@@ -52,4 +48,3 @@ def error_webhook(report):
         requests.post(url, json=content, timeout=10)
     except Exception as e:
         print(f"Error POSTing error report: {e}")
-        return None
