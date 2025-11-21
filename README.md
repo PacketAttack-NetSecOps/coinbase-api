@@ -1,5 +1,5 @@
 # coinbase-api
-Scripts used to connect to the Coinbase API and execute strategic buys on market dips.
+Scripts used to connect to the Coinbase API and execute strategic crypto buys on market dips.
 
 ## Links
 [Coinbase Advanced API](https://www.coinbase.com/developer-platform/products/advanced-trade-api)  
